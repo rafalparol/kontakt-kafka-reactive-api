@@ -1,0 +1,6 @@
+main:
+  config:
+    kafkaTopicName: anomalies
+    kafkaBootstrapServers: 172.18.0.1:32770
+    kafkaGroupId: application-2
+    kafkaOffsets: earliest
