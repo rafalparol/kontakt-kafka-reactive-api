@@ -1,4 +1,4 @@
-package inc.temp.right.always.reactiveapi.handlers;
+package inc.temp.right.always.reactiveapi.controllers;
 
 import inc.temp.right.always.reactiveapi.services.TemperatureMeasurementsService;
 import lombok.extern.log4j.Log4j2;
@@ -8,14 +8,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
+import java.time.Duration;
+
 @RestController
 @Log4j2
-public class TemperatureMeasurementsHandler {
+public class TemperatureMeasurementsController {
     @Autowired
     private TemperatureMeasurementsService temperatureMeasurementsService;
 
-    @GetMapping(value = "/stream", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
     public Flux<String> anomalies() {
         return temperatureMeasurementsService.anomalies();
+    }
+
+    @GetMapping(value = "/trivialStream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public Flux<Long> trivialStream() {
+        return Flux.interval(Duration.ofSeconds(1L));
     }
 }

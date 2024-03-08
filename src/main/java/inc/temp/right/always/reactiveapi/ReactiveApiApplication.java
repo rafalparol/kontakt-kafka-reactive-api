@@ -19,6 +19,6 @@ public class ReactiveApiApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		temperatureMeasurementsService.anomalies().subscribe(s -> log.info(String.format("Message from Kafka: %s.", s)));
+		// temperatureMeasurementsService.anomalies().subscribe(s -> log.info(String.format("Message from Kafka: %s.", s)));
 	}
 }
