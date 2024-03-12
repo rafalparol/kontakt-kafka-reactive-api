@@ -25,4 +25,8 @@ public class TemperatureMeasurementsController {
     public Flux<Long> trivialStream() {
         return Flux.interval(Duration.ofSeconds(1L));
     }
+
+    public void setTemperatureMeasurementsService(TemperatureMeasurementsService temperatureMeasurementsService) {
+        this.temperatureMeasurementsService = temperatureMeasurementsService;
+    }
 }
